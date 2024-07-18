@@ -21,7 +21,7 @@ const accessChat = asyncHandler(async (req, res) => {
     .populate("latestMessage");
 
   isChat = await User.populate(isChat, {
-    path: "latestMessage.sender",
+    path: "latestMessage.sender", 
     select: "name pic email",
   });
 
@@ -131,9 +131,6 @@ const renameGroup = asyncHandler(async (req, res) => {
 
 const removeFromGroup = asyncHandler(async (req, res) => {
   const { chatId, userId } = req.body;
-
-
-
   const removed = await Chat.findByIdAndUpdate(
     chatId,
     {
@@ -157,9 +154,6 @@ const removeFromGroup = asyncHandler(async (req, res) => {
 
 const addToGroup = asyncHandler(async (req, res) => {
   const { chatId, userId } = req.body;
-
-
-
   const added = await Chat.findByIdAndUpdate(
     chatId,
     {
